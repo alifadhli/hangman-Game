@@ -46,7 +46,7 @@ var buttons = function() {
     listItem.classList.add('btn-primary');
 
     listItem.innerHTML = alphabet[i];
-    //appends listIem to my buttons
+    
     myButtons.appendChild(listItem);
     listItem.dataset.alphabet = alphabet[i];
 
@@ -114,37 +114,36 @@ function checkLetters(letter) {
   }
 }
 
-//Upon finishing
+
 function round() {
 
   console.log("WinCount: " + winCounter + " | LossCount: " + lossCounter + " | NumGuesses: " + numGuesses);
 
-  // Update the HTML to reflect the new number of guesses. Also update the correct guesses.
+  
   document.getElementById("guessesRemaining").innerHTML = "Number Of Guesses Remaining: " + numGuesses;
   document.getElementById("currentWord").innerHTML = "Find the missing letters: " + blanksAndSuccess.join(" ");
   document.getElementById("guessed" ).innerHTML = "Letters already guessed: " + incorrectGuess.join(" ");
    var getHint = document.getElementById("hint");
   var showClue = document.getElementById("clue");
 
-  // If we have gotten all the letters to match the solution... 
+  
   if (currentLetters.toString() == blanksAndSuccess.toString()) {
     winCounter++; // add to the win counter 
     document.getElementById("word").innerHTML = "The last word was " + currentWord;
     alert("You win! The word was " + currentWord); // give the user an alert   
 
-    // Update the win counter in the HTML
     document.getElementById("winCounter").innerHTML = "You have won " + winCounter + " game(s)";
     startGame(); // restart the game 
   }
 
-  // If we've run out of guesses
+
   else if (numGuesses == 0) {
     lossCounter++; // add to the loss counter 
     document.getElementById("word").innerHTML = "The last word was " + currentWord;
 
     alert("You lose. The word was " + currentWord); // give the user an alert
 
-    // Update the loss counter in the HTML
+    
     document.getElementById("lossCounter").innerHTML = "You have lost " + lossCounter + " game(s)";
     startGame(); // restart the game
   }
@@ -159,6 +158,5 @@ hint.onclick = function() { hints = [}
   };
 
 
-//Making the stuff run
-//Calling the startGame function
+
 startGame();
