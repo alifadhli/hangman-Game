@@ -12,6 +12,7 @@ var currentLetters = [];
 var winCounter = 0;
 var lossCounter = 0;
 var numGuesses = 12;
+var getHint ;      // Word getHint
 
 var alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
   'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
@@ -23,6 +24,8 @@ var guessedLetter = [];
 var correctLetter = [];
 //guessed letters that are incorrect
 var incorrectGuess = [];
+
+var showClue = document.getElementById("clue");
 
 
 // create alphabet ul
@@ -144,7 +147,19 @@ function round() {
     startGame(); // restart the game
   }
 }
+// Hint 
+ hint.onclick = function() {
 
+      hints = [
+        ["Based in Mersyside", "Based in Mersyside", "First Welsh team to reach the Premier Leauge", "Owned by A russian Billionaire", "Once managed by Phil Brown", "2013 FA Cup runners up", "Gazza's first club"],
+        ["Science-Fiction horror film", "1971 American action film", "Historical drama", "Anamated Fish", "Giant great white shark"],
+        ["Northern city in the UK", "Home of AC and Inter", "Spanish capital", "Netherlands capital", "Czech Republic capital"]
+    ];
+
+    var catagoryIndex = categories.indexOf(chosenCategory);
+    var hintIndex = chosenCategory.indexOf(word);
+    showClue.innerHTML = "Clue: - " +  hints [catagoryIndex][hintIndex];
+  };
 //Making the stuff run
 //Calling the startGame function
 startGame();
