@@ -3,7 +3,7 @@
 var roomWords = ['table', 'door', 'couch', 'window', 'carpet', 'tv', 'candle', 'books',
   'cup', 'light', 'shelf', 'curtains', 'wallcabinet','tvcabinet', 
 ];
-var blanksAndSuccess = []; //Correct guesses and blanks will be in this array
+var blanksAndSuccess = []; //Correct guesses 
 var blanks = 0; 
 var getHint ;
 var currentWord = "";
@@ -21,31 +21,30 @@ var alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
 
 //array for users guessed letters
 var guessedLetter = [];
-//array for users correct guesses
+
 var correctLetter = [];
-//guessed letters that are incorrect
+
 var incorrectGuess = [];
 
 
 
 
-// create alphabet ul
+
 var buttons = function() {
   //gets the alphabet button id from html
   var myButtons = document.getElementById('alphabet-btns');
-  //creates unordered list for the letters
+  
   var letters = document.createElement('ul');
 
 
   //loops through the alphabet
   for (var i = 0; i < alphabet.length; i++) {
-    //creates li for list
+
     let listItem = document.createElement('li');
-    //this creates the button and adds the bootstrap button look to it
+    
     listItem = document.createElement('BUTTON');
     listItem.classList.add('btn-primary');
-    //gives each list item the id letter
-    //      list.id = 'letter';
+
     listItem.innerHTML = alphabet[i];
     //appends listIem to my buttons
     myButtons.appendChild(listItem);
@@ -67,19 +66,17 @@ document.getElementById("gameStart").onclick = function() {buttons()};
 
 
 
-//Below is the functionality of the game
 function startGame() {
   numGuesses = 12;
   blanksAndSuccess = [];
   guessedLetter = [];
   incorrectGuess = [];
-  //Selects a fruitword at random
   currentWord = roomWords[Math.floor(Math.random() * roomWords.length)];
 
   //Splits the current word into letters, so that you can match the users guesses to the letters of the word
   currentLetters = currentWord.split("");
 
-  //Need to know how many blanks
+ 
   blanks = currentLetters.length;
   for (var i = 0; i < blanks; i++) {
     blanksAndSuccess.push("_")
