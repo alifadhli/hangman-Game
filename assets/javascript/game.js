@@ -1,19 +1,17 @@
 
+//Made the variables first to use in the functions
 //Array of roomWords
 var roomWords = ['table', 'door', 'couch', 'window', 'carpet', 'tv', 'candle', 'books',
   'cup', 'light', 'shelf', 'curtains', 'wallcabinet','tvcabinet', 
 ];
 var blanksAndSuccess = []; //Correct guesses and blanks will be in this array
-var blanks = 0; 
-var getHint ;
+var blanks = 0; //holds blanks spaces for the word chosen
 var currentWord = "";
 var currentLetters = [];
-var getHint ;  
 // Counters
 var winCounter = 0;
 var lossCounter = 0;
 var numGuesses = 12;
- var showClue = document.getElementById("clue");
 
 var alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
   'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
@@ -25,8 +23,6 @@ var guessedLetter = [];
 var correctLetter = [];
 //guessed letters that are incorrect
 var incorrectGuess = [];
-
-
 
 
 // create alphabet ul
@@ -66,7 +62,6 @@ var buttons = function() {
 document.getElementById("gameStart").onclick = function() {buttons()};
 
 
-
 //Below is the functionality of the game
 function startGame() {
   numGuesses = 12;
@@ -88,7 +83,6 @@ function startGame() {
   document.getElementById('currentWord').innerHTML = "Find the missing letters: " + blanksAndSuccess.join(" ");
   document.getElementById('guessesRemaining').innerHTML = "Guesses left: " + numGuesses;
   document.getElementById('guessed').innerHTML = "Letters already guessed: "
-
 }
 
 //Checks if users letter is in the word
@@ -125,9 +119,7 @@ function round() {
   // Update the HTML to reflect the new number of guesses. Also update the correct guesses.
   document.getElementById("guessesRemaining").innerHTML = "Number Of Guesses Remaining: " + numGuesses;
   document.getElementById("currentWord").innerHTML = "Find the missing letters: " + blanksAndSuccess.join(" ");
-  document.getElementById("guessed" ).innerHTML = "Letters already guessed: " + incorrectGuess.join(" ");
-   var getHint = document.getElementById("hint");
-  var showClue = document.getElementById("clue");
+  document.getElementById("guessed").innerHTML = "Letters already guessed: " + incorrectGuess.join(" ");
 
   // If we have gotten all the letters to match the solution... 
   if (currentLetters.toString() == blanksAndSuccess.toString()) {
@@ -153,15 +145,8 @@ function round() {
   }
 }
 
-hint.onclick = function() { hints = [}
-    ];
-
-    var catagoryIndex = categories.indexOf(chosenCategory);
-    var hintIndex = chosenCategory.indexOf(word);
-    showClue.innerHTML = "Clue: - " +  hints [catagoryIndex][hintIndex];
-  };
-
-
 //Making the stuff run
 //Calling the startGame function
 startGame();
+
+
