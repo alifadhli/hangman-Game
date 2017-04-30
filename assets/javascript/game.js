@@ -1,11 +1,10 @@
 
-//Made the variables first to use in the functions
 //Array of roomWords
 var roomWords = ['table', 'door', 'couch', 'window', 'carpet', 'tv', 'candle', 'books',
   'cup', 'light', 'shelf', 'curtains', 'wallcabinet','tvcabinet', 
 ];
-var blanksAndSuccess = []; //Correct guesses and blanks will be in this array
-var blanks = 0; //holds blanks spaces for the word chosen
+var blanksAndSuccess = []; 
+var blanks = 0; 
 var currentWord = "";
 var currentLetters = [];
 // Counters
@@ -20,17 +19,17 @@ var alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
 
 //array for users guessed letters
 var guessedLetter = [];
-//array for users correct guesses
+
 var correctLetter = [];
-//guessed letters that are incorrect
+
 var incorrectGuess = [];
 
 var showClue = document.getElementById("clue");
 
 
-// create alphabet ul
+
 var buttons = function() {
-  //gets the alphabet button id from html
+  
   var myButtons = document.getElementById('alphabet-btns');
   //creates unordered list for the letters
   var letters = document.createElement('ul');
@@ -38,15 +37,15 @@ var buttons = function() {
 
   //loops through the alphabet
   for (var i = 0; i < alphabet.length; i++) {
-    //creates li for list
+
     let listItem = document.createElement('li');
-    //this creates the button and adds the bootstrap button look to it
+    
     listItem = document.createElement('BUTTON');
     listItem.classList.add('btn-primary');
-    //gives each list item the id letter
-    //      list.id = 'letter';
+    
+   
     listItem.innerHTML = alphabet[i];
-    //appends listIem to my buttons
+
     myButtons.appendChild(listItem);
     listItem.dataset.alphabet = alphabet[i];
 
@@ -55,7 +54,7 @@ var buttons = function() {
       var userGuess = listItem.dataset.alphabet;     
       guessedLetter.push(userGuess);
       document.getElementById('guessed').innerHTML = "Letters Already Guessed: " + guessedLetter.join(" ");
-      checkLetters(userGuess); // runs the code to check for correctness      
+      checkLetters(userGuess);      
       round();
     }
 
@@ -65,7 +64,6 @@ var buttons = function() {
 document.getElementById("gameStart").onclick = function() {buttons()};
 
 
-//Below is the functionality of the game
 function startGame() {
   numGuesses = 12;
   blanksAndSuccess = [];
@@ -74,10 +72,9 @@ function startGame() {
   //Selects a fruitword at random
   currentWord = roomWords[Math.floor(Math.random() * roomWords.length)];
 
-  //Splits the current word into letters, so that you can match the users guesses to the letters of the word
+ 
   currentLetters = currentWord.split("");
 
-  //Need to know how many blanks
   blanks = currentLetters.length;
   for (var i = 0; i < blanks; i++) {
     blanksAndSuccess.push("_")
@@ -88,11 +85,11 @@ function startGame() {
   document.getElementById('guessed').innerHTML = "Letters already guessed: "
 }
 
-//Checks if users letter is in the word
+
 function checkLetters(letter) {
-  //using Boolean to check if the letter is in the word
+
   var letterInWord = false;
-  //loop that goes through the length of the word
+ 
   for (var i = 0; i < blanks; i++) {
     if (currentWord[i] == letter) {
       letterInWord = true;
@@ -114,7 +111,6 @@ function checkLetters(letter) {
   }
 }
 
-//Upon finishing
 function round() {
 
   console.log("WinCount: " + winCounter + " | LossCount: " + lossCounter + " | NumGuesses: " + numGuesses);
@@ -130,19 +126,19 @@ function round() {
     document.getElementById("word").innerHTML = "The last word was " + currentWord;
     alert("You win! The word was " + currentWord); // give the user an alert   
 
-    // Update the win counter in the HTML
+   
     document.getElementById("winCounter").innerHTML = "You have won " + winCounter + " game(s)";
     startGame(); // restart the game 
   }
 
-  // If we've run out of guesses
+ 
   else if (numGuesses == 0) {
     lossCounter++; // add to the loss counter 
     document.getElementById("word").innerHTML = "The last word was " + currentWord;
 
     alert("You lose. The word was " + currentWord); // give the user an alert
 
-    // Update the loss counter in the HTML
+
     document.getElementById("lossCounter").innerHTML = "You have lost " + lossCounter + " game(s)";
     startGame(); // restart the game
   }
@@ -151,9 +147,7 @@ function round() {
  hint.onclick = function() {
 
       hints = [
-        ["Based in Mersyside", "Based in Mersyside", "First Welsh team to reach the Premier Leauge", "Owned by A russian Billionaire", "Once managed by Phil Brown", "2013 FA Cup runners up", "Gazza's first club"],
-        ["Science-Fiction horror film", "1971 American action film", "Historical drama", "Anamated Fish", "Giant great white shark"],
-        ["Northern city in the UK", "Home of AC and Inter", "Spanish capital", "Netherlands capital", "Czech Republic capital"]
+
     ];
 
     var catagoryIndex = categories.indexOf(chosenCategory);
